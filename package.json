@@ -1,0 +1,21 @@
+{
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/netlify": "^2.1.1",
+    "astro": "^2.0.6",
+    "luxon": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.2.0"
+  }
+}
