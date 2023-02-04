@@ -1,0 +1,97 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  :root {
+    --bezier-transition: cubic-bezier(0.4, 0, 0.2, 1);
+    /* font families */
+    --font-family-body: "Helvetica", "Arial", sans-serif;
+    /* light mode colors */
+    --light-mode-dark: hsl(223, 6%, 23%);
+    --light-mode-off-dark: hsl(223, 7%, 20%);
+    --light-mode-light-grey: hsl(180, 3%, 77%);
+    --light-mode-dark-grey: hsl(180, 3%, 28%);
+    --light-mode-link-blue: hsl(237, 66%, 60%);
+    --light-mode-white: hsl(0, 0%, 100%);
+    /* dark mode colors */
+    --dark-mode-dark: hsl(0, 0%, 100%);
+    --dark-mode-off-dark: hsl(223, 7%, 20%);
+    --dark-mode-light-grey: hsl(205, 15%, 51%);
+    --dark-mode-dark-grey: hsl(205, 10%, 90%);
+    --dark-mode-link-blue: hsl(237, 66%, 60%);
+    --dark-mode-white: hsl(223, 6%, 27%);
+    /* set defaults to be overridden */
+    --dark: var(--dark-mode-dark);
+    --light-grey: var(--dark-mode-light-grey);
+    --dark-grey: var(--light-mode-dark-grey);
+    --link-blue: var(--dark-mode-link-blue);
+    --white: var(--dark-mode-white);
+    --off-dark: var(---dark-mode-off-dark);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --dark: var(--dark-mode-dark);
+      --light-grey: var(--dark-mode-light-grey);
+      --dark-grey: var(--dark-mode-dark-grey);
+      --link-blue: var(--dark-mode-link-blue);
+      --white: var(--dark-mode-white);
+      --off-dark: var(--dark-mode-off-dark);
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --dark: var(--light-mode-dark);
+      --light-grey: var(--light-mode-light-grey);
+      --link-blue: var(--light-mode-link-blue);
+      --white: var(--light-mode-white);
+      --off-dark: var(--light-mode-off-dark);
+    }
+  }
+  html,
+  body {
+    font-family: var(--font-family-body);
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+  }
+  div,
+  span,
+  a {
+    color: currentColor;
+  }
+  html {
+    box-sizing: border-box;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+</style>

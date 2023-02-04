@@ -1,0 +1,56 @@
+---
+import type { DurationLike } from "luxon";
+import { DateTime } from "luxon";
+
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Header from "../components/Header.astro";
+import ChatLog from "../components/ChatLog.astro";
+
+export const DAYS_AGO: DurationLike = { days: 406 };
+
+const getParams = (location: URL) => {
+  const searchParams = new URLSearchParams(location.search);
+  return {
+    time: searchParams.get("time") ?? "",
+  };
+};
+
+const { time } = getParams(Astro.url);
+const startTime = time
+  ? DateTime.fromISO(time).setZone("utc")
+  : DateTime.now().setZone("utc").minus(DAYS_AGO);
+---
+
+<script></script>
+
+<Layout title="Welcome to Astro.">
+  <main class="MainGrid">
+    <Sidebar />
+    <Header />
+    {startTime ? <ChatLog startDate={startTime} /> : null}
+  </main>
+</Layout>
+
+<style>
+  .MainGrid {
+    display: grid;
+    grid-template:
+      "sidebar header" 4rem
+      "sidebar chat" auto
+      "sidebar typing-message" min-content
+      / 16rem auto;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+
+  @media (max-width: 680px) {
+    .MainGrid {
+      grid-template:
+        "header" 4rem
+        "chat" auto
+        "typing-message" 2rem
+        / auto;
+    }
+  }
+</style>
