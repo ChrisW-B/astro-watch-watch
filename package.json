@@ -1,21 +1,34 @@
 {
   "name": "@example/basics",
-  "type": "module",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "astro": "astro",
     "build": "astro build",
+    "dev": "astro dev",
+    "lint:astro": "astro check",
+    "lint:js": "eslint ./ --ext .js,.ts,.astro",
+    "prettier": "prettier --list-different . --write",
+    "prettier:check": "prettier . -c",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/netlify": "^2.1.1",
     "astro": "^2.0.6",
-    "luxon": "^3.2.1"
+    "luxon": "^3.2.1",
+    "mongodb": "^5.0.0"
   },
   "devDependencies": {
-    "@types/luxon": "^3.2.0"
+    "@types/luxon": "^3.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint": "^8.33.0",
+    "eslint-plugin-astro": "^0.23.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "prettier": "^2.8.3",
+    "prettier-plugin-astro": "^0.8.0",
+    "prettier-plugin-packagejson": "^2.4.2"
   }
 }

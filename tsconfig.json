@@ -1,8 +1,6 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "ignoreDeprecations": "5.0",
-    "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "paths": { "~/*": ["src/*"] }
   }

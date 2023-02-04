@@ -1,11 +1,10 @@
 ---
-import type { DurationLike } from "luxon";
-import { DateTime } from "luxon";
+import { DateTime, type DurationLike } from "luxon";
 
-import Layout from "~/layouts/Layout.astro";
-import Sidebar from "~/components/Sidebar.astro";
-import Header from "~/components/Header.astro";
 import ChatLog from "~/components/ChatLog.astro";
+import Header from "~/components/Header.astro";
+import Sidebar from "~/components/Sidebar.astro";
+import Layout from "~/layouts/Layout.astro";
 
 export const DAYS_AGO: DurationLike = { days: 406 };
 

@@ -1,6 +1,6 @@
-import { defineConfig } from "astro/config";
 // @ts-ignore
 import netlify from "@astrojs/netlify/functions";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
