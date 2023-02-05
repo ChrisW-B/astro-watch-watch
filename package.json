@@ -8,7 +8,7 @@
     "build": "astro build",
     "dev": "astro dev",
     "lint:astro": "astro check",
-    "lint:js": "eslint ./ --ext .js,.ts,.astro",
+    "lint:js": "eslint ./ --ext .js,.ts,.tsx,.astro",
     "prettier": "prettier --list-different . --write",
     "prettier:check": "prettier . -c",
     "preview": "astro preview",
