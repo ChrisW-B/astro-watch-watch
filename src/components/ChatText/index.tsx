@@ -51,11 +51,13 @@ const ChatText: React.FC<OwnProps> = ({ content, mentions }) => {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          blockquote: ({ node, ...props }) => <blockquote className='markdown' {...props} />,
-          code: ({ node, ...props }) => <code className='markdown' {...props} />,
-          a: (props) => <a className='markdown' {...props} />,
+          blockquote: ({ node, ...props }) => (
+            <blockquote className='markdown markdown-blockquote' {...props} />
+          ),
+          code: ({ node, ...props }) => <code className='markdown markdown-code' {...props} />,
+          a: (props) => <a className='markdown markdown-anchor' {...props} />,
           p: ({ node, ...props }) => (
-            <p {...props}>
+            <p className='markdown markdown-p' {...props}>
               <ParaWithSpoilers node={node} />
             </p>
           ),
