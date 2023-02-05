@@ -1,15 +1,17 @@
 .reaction {
-  background-color: var(--extra-light-grey);
-  border-radius: 4px;
-  padding: 4px 6px;
   display: flex;
   flex-flow: row nowrap;
   gap: 0.5rem;
   align-items: center;
-  height: 29px;
+
+  height: 1.18rem;
+  padding: 0.25rem 0.375rem;
+
+  background-color: var(--extra-light-grey);
+  border-radius: 4px;
 }
 
 .emoji-img {
   height: 100%;
-  padding: 2px 0;
+  padding: 0.125rem 0;
 }

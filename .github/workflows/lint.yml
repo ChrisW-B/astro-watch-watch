@@ -6,6 +6,7 @@ on:
 
 jobs:
   check-prettier:
+    name: ✨ Check Prettier
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,6 +20,7 @@ jobs:
       - run: npm run prettier:check
 
   check-eslint:
+    name: 📐 Lint Code
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,6 +34,7 @@ jobs:
       - run: npm run lint:js
 
   check-astro:
+    name: 🚀 Check Astro
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -44,7 +47,22 @@ jobs:
       - run: npm ci
       - run: npm run lint:astro
 
+  check-stylelint:
+    name: 💅 Check Stylelint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - run: npm ci
+      - run: npm run lint:css
+
   check-typescript:
+    name: 🏷 Check Typescript
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

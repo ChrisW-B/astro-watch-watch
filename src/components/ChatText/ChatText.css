@@ -2,37 +2,40 @@
   grid-column: 2;
 }
 
-blockquote.markdown {
-  border-left: 4px solid var(--light-grey);
+.markdown-blockquote {
   margin: 0.3rem 0 0 0.2rem;
   padding: 0.3rem 0 0.3rem 0.5rem;
+  border-left: 4px solid var(--light-grey);
 }
 
-a.markdown {
+.markdown-anchor {
   color: var(--link-blue);
   text-decoration: none;
 }
-a.markdown:hover {
+
+.markdown-anchor:hover,
+.markdown-anchor:focus {
   text-decoration: underline;
 }
 
-blockquote.markdown code {
-  white-space: pre;
+.markdown-blockquote code {
   font-size: 1.2rem;
+  white-space: pre;
 }
 
-blockquote.markdown code::before {
+.markdown-blockquote code::before {
   content: '\A';
 }
 
 .markdown.spoiler {
+  padding: 0.1rem;
   color: grey;
   background: grey;
-  padding: 0.1rem;
   border-radius: 4px;
 }
 
-.markdown.spoiler:hover {
-  background-color: var(--light-grey);
+.markdown.spoiler:hover,
+.markdown.spoiler:focus {
   color: var(--dark);
+  background-color: var(--light-grey);
 }

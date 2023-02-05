@@ -1,0 +1,61 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended",
+    "@ronilaukkarinen/stylelint-a11y/recommended",
+    "stylelint-config-prettier",
+    "stylelint-config-clean-order"
+  ],
+  "plugins": ["stylelint-no-unsupported-browser-features", "@ronilaukkarinen/stylelint-a11y"],
+  "rules": {
+    "color-no-invalid-hex": true,
+    "custom-property-empty-line-before": "never",
+    "declaration-block-no-redundant-longhand-properties": true,
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "severity": "warning",
+        "ignorePartialSupport": true
+      }
+    ],
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
+      }
+    ],
+    "selector-class-pattern": "^([A-Za-z][a-zA-Z0-9]*)(-[A-Za-z0-9]+)*$",
+    "selector-max-compound-selectors": 8,
+    "selector-nested-pattern": "^&",
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": ["attribute"]
+      }
+    ],
+    "shorthand-property-no-redundant-values": true,
+    "unit-case": "lower",
+    "unit-no-unknown": true,
+    "length-zero-no-unit": true,
+    "unit-disallowed-list": [
+      ["px", "rad", "s"],
+      {
+        "ignoreProperties": {
+          "px": ["/^--rbcl-elevation/", "/^border/", "/^outline/"]
+        },
+        "ignoreMediaFeatureNames": {
+          "px": ["/min-width/", "/max-width/"]
+        }
+      }
+    ],
+    "value-keyword-case": [
+      "lower",
+      {
+        "camelCaseSvgKeywords": true
+      }
+    ],
+    "value-no-vendor-prefix": true
+  },
+  "ignoreFiles": ["**/*.{j,t}s{x,}"]
+}

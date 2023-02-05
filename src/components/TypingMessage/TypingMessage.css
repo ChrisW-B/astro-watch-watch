@@ -1,7 +1,9 @@
 .typing-message {
-  padding: 0 1.2rem 0.4rem;
-  white-space: nowrap;
   grid-area: typing-message;
-  color: var(--dark-grey);
+
+  padding: 0 1.2rem 0.4rem;
+
   font-size: 0.8rem;
+  color: var(--dark-grey);
+  white-space: nowrap;
 }
