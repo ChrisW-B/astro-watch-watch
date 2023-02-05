@@ -1,0 +1,17 @@
+.list-wrapper {
+  margin: 0;
+  padding: 0 1.2rem;
+  overflow: auto;
+  flex: 1;
+  display: block;
+  grid-area: chat;
+}
+
+.message-list {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: column nowrap;
+  padding: 0;
+}
+

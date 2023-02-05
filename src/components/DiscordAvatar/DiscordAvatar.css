@@ -1,0 +1,9 @@
+.avatar {
+  border-radius: 100%;
+  background-image: var(--bg-image);
+  grid-row: span 4;
+  grid-column: 1;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+}

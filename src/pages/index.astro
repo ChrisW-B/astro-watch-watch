@@ -1,54 +1,56 @@
 ---
-import { DateTime, type DurationLike } from "luxon";
+import { DateTime, type DurationLike } from 'luxon';
 
-import ChatLog from "~/components/ChatLog.astro";
-import Header from "~/components/Header.astro";
-import Sidebar from "~/components/Sidebar.astro";
-import Layout from "~/layouts/Layout.astro";
+import ChatLog from '~/components/ChatLog';
+import Header from '~/components/Header.astro';
+import Sidebar from '~/components/Sidebar.astro';
+import Layout from '~/layouts/Layout.astro';
 
 export const DAYS_AGO: DurationLike = { days: 406 };
 
 const getParams = (location: URL) => {
   const searchParams = new URLSearchParams(location.search);
   return {
-    time: searchParams.get("time") ?? "",
+    time: searchParams.get('time') ?? '',
   };
 };
 
 const { time } = getParams(Astro.url);
 const startTime = time
-  ? DateTime.fromISO(time).setZone("utc")
-  : DateTime.now().setZone("utc").minus(DAYS_AGO);
+  ? DateTime.fromISO(time).setZone('utc')
+  : DateTime.now().setZone('utc').minus(DAYS_AGO);
+
+const astroUrl = `${Astro.url.protocol}//${Astro.url.host}`;
 ---
 
 <script></script>
 
-<Layout title="Welcome to Astro.">
-  <main class="MainGrid">
+<Layout title='Watch the Mints'>
+  <main class='main-grid'>
     <Sidebar />
     <Header />
-    {startTime ? <ChatLog startDate={startTime} /> : null}
+    {startTime ? <ChatLog astroUrl={astroUrl} startTime={startTime.toISO()} client:load /> : null}
   </main>
 </Layout>
 
 <style>
-  .MainGrid {
+  .main-grid {
     display: grid;
     grid-template:
-      "sidebar header" 4rem
-      "sidebar chat" auto
-      "sidebar typing-message" min-content
+      'sidebar header' 4rem
+      'sidebar chat' auto
+      'sidebar typing-message' min-content
       / 16rem auto;
     height: 100vh;
     overflow-y: hidden;
   }
 
   @media (max-width: 680px) {
-    .MainGrid {
+    .main-grid {
       grid-template:
-        "header" 4rem
-        "chat" auto
-        "typing-message" 2rem
+        'header' 4rem
+        'chat' auto
+        'typing-message' 2rem
         / auto;
     }
   }

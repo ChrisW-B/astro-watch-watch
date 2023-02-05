@@ -1,0 +1,32 @@
+.chat-message {
+  display: grid;
+  gap: 0.5rem;
+  grid-auto-rows: min-content;
+  grid-template-columns: 50px auto;
+  margin: 0.8rem 0;
+  list-style: none;
+  padding: 0;
+}
+
+.message-author {
+  color: #649c7a;
+  grid-column: 2;
+}
+
+.message-timestamp {
+  color: var(--light-grey);
+  font-size: 0.7rem;
+  padding-left: 0.4rem;
+  text-decoration: none;
+}
+
+.message-timestamp:hover {
+  text-decoration: underline;
+}
+
+.react-list {
+  grid-column: 2;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+}

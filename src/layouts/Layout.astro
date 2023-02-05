@@ -7,12 +7,12 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
@@ -23,7 +23,7 @@ const { title } = Astro.props;
   :root {
     --bezier-transition: cubic-bezier(0.4, 0, 0.2, 1);
     /* font families */
-    --font-family-body: "Helvetica", "Arial", sans-serif;
+    --font-family-body: 'Helvetica', 'Arial', sans-serif;
     /* light mode colors */
     --light-mode-dark: hsl(223, 6%, 23%);
     --light-mode-off-dark: hsl(223, 7%, 20%);
@@ -31,6 +31,7 @@ const { title } = Astro.props;
     --light-mode-dark-grey: hsl(180, 3%, 28%);
     --light-mode-link-blue: hsl(237, 66%, 60%);
     --light-mode-white: hsl(0, 0%, 100%);
+    --light-mode-extra-light-grey: hsl(180, 3%, 90%);
     /* dark mode colors */
     --dark-mode-dark: hsl(0, 0%, 100%);
     --dark-mode-off-dark: hsl(223, 7%, 20%);
@@ -38,13 +39,15 @@ const { title } = Astro.props;
     --dark-mode-dark-grey: hsl(205, 10%, 90%);
     --dark-mode-link-blue: hsl(237, 66%, 60%);
     --dark-mode-white: hsl(223, 6%, 27%);
+    --dark-mode-extra-light-grey: hsl(180, 3%, 20%);
     /* set defaults to be overridden */
     --dark: var(--dark-mode-dark);
     --light-grey: var(--dark-mode-light-grey);
     --dark-grey: var(--light-mode-dark-grey);
     --link-blue: var(--dark-mode-link-blue);
     --white: var(--dark-mode-white);
-    --off-dark: var(---dark-mode-off-dark);
+    --off-dark: var(--dark-mode-off-dark);
+    --extra-light-grey: var(--dark-mode-extra-light-grey);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -55,6 +58,7 @@ const { title } = Astro.props;
       --link-blue: var(--dark-mode-link-blue);
       --white: var(--dark-mode-white);
       --off-dark: var(--dark-mode-off-dark);
+      --extra-light-grey: var(--dark-mode-extra-light-grey);
     }
   }
   @media (prefers-color-scheme: light) {
@@ -64,6 +68,7 @@ const { title } = Astro.props;
       --link-blue: var(--light-mode-link-blue);
       --white: var(--light-mode-white);
       --off-dark: var(--light-mode-off-dark);
+      --extra-light-grey: var(--light-mode-extra-light-grey);
     }
   }
   html,

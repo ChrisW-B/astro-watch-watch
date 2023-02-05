@@ -1,0 +1,38 @@
+.message-text {
+  grid-column: 2;
+}
+
+blockquote.markdown {
+  border-left: 4px solid var(--light-grey);
+  margin: 0.3rem 0 0 0.2rem;
+  padding: 0.3rem 0 0.3rem 0.5rem;
+}
+
+a.markdown {
+  color: var(--link-blue);
+  text-decoration: none;
+}
+a.markdown:hover {
+  text-decoration: underline;
+}
+
+blockquote.markdown code {
+  white-space: pre;
+  font-size: 1.2rem;
+}
+
+blockquote.markdown code::before {
+  content: '\A';
+}
+
+.markdown.spoiler {
+  color: grey;
+  background: grey;
+  padding: 0.1rem;
+  border-radius: 4px;
+}
+
+.markdown.spoiler:hover {
+  background-color: var(--light-grey);
+  color: var(--dark);
+}

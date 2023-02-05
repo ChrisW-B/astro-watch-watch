@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "@chrisw-b/astro-watch-watch",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -15,20 +15,28 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/netlify": "^2.1.1",
-    "astro": "^2.0.6",
-    "luxon": "^3.2.1",
-    "mongodb": "^5.0.0"
+    "@astrojs/netlify": "2.1.1",
+    "@astrojs/react": "^2.0.2",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@webcomponents/template-shadowroot": "^0.1.0",
+    "astro": "2.0.6",
+    "luxon": "3.2.1",
+    "mongodb": "5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.5",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
-    "@types/luxon": "^3.2.0",
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.50.0",
-    "eslint": "^8.33.0",
-    "eslint-plugin-astro": "^0.23.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "prettier": "^2.8.3",
-    "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-packagejson": "^2.4.2"
+    "@types/luxon": "3.2.0",
+    "@typescript-eslint/eslint-plugin": "5.50.0",
+    "@typescript-eslint/parser": "5.50.0",
+    "eslint": "8.33.0",
+    "eslint-plugin-astro": "0.23.0",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "prettier": "2.8.3",
+    "prettier-plugin-astro": "0.8.0",
+    "prettier-plugin-packagejson": "2.4.2"
   }
 }
