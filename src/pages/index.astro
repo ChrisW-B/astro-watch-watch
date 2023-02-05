@@ -6,7 +6,7 @@ import Header from '~/components/Header.astro';
 import Sidebar from '~/components/Sidebar.astro';
 import Layout from '~/layouts/Layout.astro';
 
-export const DAYS_AGO: DurationLike = { days: 406 };
+export const DAYS_AGO: DurationLike = { days: 588 };
 
 const getParams = (location: URL) => {
   const searchParams = new URLSearchParams(location.search);
@@ -28,7 +28,7 @@ const astroUrl = `${Astro.url.protocol}//${Astro.url.host}`;
 <Layout title='Watch the Mints'>
   <main class='main-grid'>
     <Sidebar />
-    <Header />
+    <Header daysAgo={DAYS_AGO} />
     {startTime ? <ChatLog astroUrl={astroUrl} startTime={startTime.toISO()} client:load /> : null}
   </main>
 </Layout>

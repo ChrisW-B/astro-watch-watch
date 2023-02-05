@@ -1,7 +1,34 @@
+---
+import { DateTime, DurationLike } from 'luxon';
+
+export interface Props {
+  daysAgo: DurationLike;
+}
+
+const { daysAgo } = Astro.props;
+---
+
+<script>
+  import { DateTime } from 'luxon';
+
+  const daysSinceElement = document.querySelector('.days-since');
+
+  if (daysSinceElement instanceof HTMLElement) {
+    setInterval(() => {
+      const duration = JSON.parse(daysSinceElement?.dataset.days ?? '');
+      const displayedDay = DateTime.now()
+        .minus(duration)
+        .toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
+      daysSinceElement.innerHTML = `It is currently ${displayedDay}`;
+    }, 1000);
+  }
+</script>
+
 <header class='header-wrapper'>
   <p class='channel-hash'>#</p>
   <h2>watch-watch-mints</h2>
   <p class='channel-description'>watch the breath mints watch the breath mints.</p>
+  <p class='days-since channel-description' data-days={JSON.stringify(daysAgo)}></p>
 </header>
 
 <style>

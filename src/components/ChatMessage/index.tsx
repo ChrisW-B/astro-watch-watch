@@ -40,14 +40,14 @@ const ChatMessage: React.FC<OwnProps> = ({ message, diffFromToday, pauseScroll }
       <DiscordAvatar
         {...author}
         avatarUrl={
-          message.embeds[0]?.author.name === 'Max Botmint III'
+          message.embeds[0]?.author?.name === 'Max Botmint III'
             ? message.embeds[0]?.author.icon_url
             : undefined
         }
       />
       <p className='message-author'>
         <b>
-          {message.embeds[0]?.author.name === 'Max Botmint III'
+          {message.embeds[0]?.author?.name === 'Max Botmint III'
             ? message.embeds[0]?.author.name
             : author.username}
         </b>
