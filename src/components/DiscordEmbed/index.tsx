@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import type { Embed } from '~/types/posts';
 import './DiscordEmbed.css';
 import discordColor from '~/utils/discordColor';
