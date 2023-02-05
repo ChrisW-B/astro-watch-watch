@@ -12,7 +12,8 @@
     "prettier": "prettier --list-different . --write",
     "prettier:check": "prettier . -c",
     "preview": "astro preview",
-    "start": "astro dev"
+    "start": "astro dev",
+    "typescript": "tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/netlify": "2.1.1",

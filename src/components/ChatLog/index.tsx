@@ -51,7 +51,13 @@ const useChatLog = (astroUrl: string, startTime: DateTime) => {
     return () => clearInterval(interval);
   }, []);
 
-  return [...chatLog].map(([, post]) => post);
+  return [...chatLog]
+    .map(([, post]) => post)
+    .sort(
+      (a, b) =>
+        DateTime.fromISO(a.timestamp.toString()).toMillis() -
+        DateTime.fromISO(b.timestamp.toString()).toMillis(),
+    );
 };
 
 const ChatLog: React.FC<OwnProps> = ({ astroUrl, startTime }) => {

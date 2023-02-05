@@ -1,0 +1,17 @@
+name: Verify Deploy
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Waiting for 200 from the Netlify Preview
+        uses: jakepartusch/wait-for-netlify-action@v1.3
+        with:
+          site_name: 'watch-watch-mints'
+      - name: Check site for copy
+        run: |
+          curl -s https://deploy-preview-${{github.event.number}}--watch-watch-mints.netlify.app | grep "<p .*>The Breath Mints Historical Discord Presents"

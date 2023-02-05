@@ -7,15 +7,25 @@ export const getPosts = async (time: DateTime): Promise<WithId<Post>[] | undefin
   const utcTime = time.toUTC();
   const postCollection = await getPostCollection();
 
-  const posts = postCollection
-    .find({
-      timestamp: {
-        $gte: utcTime.minus({ minutes: 5 }).toJSDate(),
-        $lte: utcTime.plus({ minutes: 15 }).toJSDate(),
-      },
-    })
-    .sort({ timestamp: 1 });
+  const collectionQuery = {
+    timestamp: {
+      $gte: utcTime.minus({ minutes: 5 }).toJSDate(),
+      $lte: utcTime.plus({ minutes: 15 }).toJSDate(),
+    },
+  };
+
+  const contextQuery = {
+    timestamp: {
+      $gte: utcTime.minus({ hours: 12 }).toJSDate(),
+      $lte: utcTime.minus({ minutes: 5 }).toJSDate(),
+    },
+  };
+
+  const posts = postCollection.find(collectionQuery).sort({ timestamp: 1 });
+  const contextPosts = postCollection.find(contextQuery).sort({ timestamp: -1 }).limit(20);
+
+  const contextPostsArray = await contextPosts.toArray();
   const postsArray = await posts.toArray();
 
-  return postsArray;
+  return [...contextPostsArray, ...postsArray];
 };
