@@ -6,24 +6,22 @@ import Header from '~/components/Header.astro';
 import Sidebar from '~/components/Sidebar.astro';
 import Layout from '~/layouts/Layout.astro';
 
-export const DAYS_AGO: DurationLike = { days: 588 };
+// include hours for DST, remove if no time change
+export const DAYS_AGO: DurationLike = { days: 588, hours: 1 };
 
 const getParams = (location: URL) => {
   const searchParams = new URLSearchParams(location.search);
-  return {
-    time: searchParams.get('time') ?? '',
-  };
+  return { time: searchParams.get('time') };
 };
 
 const { time } = getParams(Astro.url);
+
 const startTime = time
   ? DateTime.fromISO(time).setZone('utc')
   : DateTime.now().setZone('utc').minus(DAYS_AGO);
 
 const astroUrl = `${Astro.url.protocol}//${Astro.url.host}`;
 ---
-
-<script></script>
 
 <Layout title='Watch the Mints'>
   <main class='main-grid'>
