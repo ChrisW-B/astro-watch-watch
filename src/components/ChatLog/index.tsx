@@ -48,7 +48,7 @@ const useChatLog = (astroUrl: string, startTime: DateTime) => {
       const timeSinceStart = initDate.current.diffNow();
       await fetchNewPosts(timeSinceStart);
       cleanUpOldPosts(timeSinceStart);
-    }, 15 * 60 * 1000);
+    }, 14 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, []);

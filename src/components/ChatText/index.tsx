@@ -16,10 +16,10 @@ const ChatText: React.FC<OwnProps> = ({ content, mentions }) => {
     )
     .replace(/>>>/gi, '>');
 
-  return (
+  return withMentions ? (
     <div className='message-text'>
       <MarkdownText>{withMentions}</MarkdownText>
     </div>
-  );
+  ) : null;
 };
 export default ChatText;
