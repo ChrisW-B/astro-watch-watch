@@ -1,4 +1,5 @@
 import type { Author } from '~/types/posts';
+
 import './DiscordAvatar.css';
 
 type OwnProps = Author & {

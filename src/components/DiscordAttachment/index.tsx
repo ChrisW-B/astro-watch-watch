@@ -1,4 +1,5 @@
 import type { Attachment } from '~/types/posts';
+
 import './DiscordAttachment.css';
 
 const DiscordAttachment: React.FC<Attachment> = ({ url, width, height, filename }) => {

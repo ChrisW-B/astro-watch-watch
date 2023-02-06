@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import type { Reaction } from '~/types/posts';
+
 import './ChatReact.css';
 
 const minDelay = 250;

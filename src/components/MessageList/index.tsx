@@ -1,8 +1,11 @@
-import type { Post } from '~/types/posts';
 import * as React from 'react';
-import './MessageList.css';
-import ChatMessage from '~/components/ChatMessage';
+
 import type { Duration } from 'luxon';
+
+import ChatMessage from '~/components/ChatMessage';
+import type { Post } from '~/types/posts';
+
+import './MessageList.css';
 
 type OwnProps = {
   chatMessages: Post[];

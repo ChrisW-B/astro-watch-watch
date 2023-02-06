@@ -1,6 +1,7 @@
 import type { DateTime } from 'luxon';
-import { getPostCollection } from '~/db/mongodb';
 import type { WithId } from 'mongodb';
+
+import { getPostCollection } from '~/db/mongodb';
 import type { Post } from '~/types/posts';
 
 export const getPosts = async (time: DateTime): Promise<WithId<Post>[] | undefined> => {

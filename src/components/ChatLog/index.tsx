@@ -1,8 +1,10 @@
 import * as React from 'react';
+
 import { DateTime, Duration } from 'luxon';
-import type { Post } from '~/types/posts';
+
 import MessageList from '~/components/MessageList';
 import TypingMessage from '~/components/TypingMessage';
+import type { Post } from '~/types/posts';
 
 type OwnProps = {
   startTime: string;

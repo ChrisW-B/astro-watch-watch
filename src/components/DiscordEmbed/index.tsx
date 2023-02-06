@@ -1,7 +1,10 @@
 import type React from 'react';
+
+import MarkdownText from '~/components/MarkdownText';
 import type { Embed } from '~/types/posts';
-import './DiscordEmbed.css';
 import discordColor from '~/utils/discordColor';
+
+import './DiscordEmbed.css';
 
 const DiscordEmbed: React.FC<Embed> = ({ description, color }) => {
   return (
@@ -13,7 +16,7 @@ const DiscordEmbed: React.FC<Embed> = ({ description, color }) => {
         } as React.CSSProperties
       }
     >
-      {description}
+      <MarkdownText>{description}</MarkdownText>
     </blockquote>
   );
 };
