@@ -2,7 +2,6 @@
   overflow: auto;
   display: block;
   grid-area: chat;
-  flex: 1;
 
   margin: 0;
   padding: 0 1.2rem;
@@ -12,8 +11,15 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
+  scroll-behavior: smooth;
 
   padding: 0;
 
   list-style: none;
+}
+
+.the-anchor {
+  overflow-anchor: auto;
+  height: 0.1rem;
+  scroll-behavior: smooth;
 }
