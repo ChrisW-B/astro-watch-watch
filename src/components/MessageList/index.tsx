@@ -13,41 +13,24 @@ type OwnProps = {
 };
 
 const ChatList: React.FC<OwnProps> = ({ chatMessages, diffFromToday }) => {
-  const [pauseScroll, setPauseScroll] = React.useState(false);
-  const listRef = React.useRef<HTMLDivElement>(null);
-
+  const listRef = React.useRef<HTMLLIElement>(null);
+  const hasScrolled = React.useRef(false);
   React.useEffect(() => {
-    let isRunning: number | null = null;
-    const currentRef = listRef.current;
-    const listener = () => {
-      // use isRunning to debounce
-      if (isRunning === null) {
-        isRunning = window.requestAnimationFrame(() => {
-          setPauseScroll(
-            (listRef.current?.scrollTop ?? 0) <
-              (listRef.current?.scrollHeight ?? 0) - (listRef.current?.offsetHeight ?? 0),
-          );
-          isRunning = null;
-        });
-      }
-    };
-    listRef.current?.addEventListener('scroll', listener);
-    return () => {
-      currentRef?.removeEventListener('scroll', listener);
-    };
-  });
+    if (chatMessages.length && !hasScrolled.current) {
+      hasScrolled.current = true;
+      setTimeout(() => {
+        listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 1000);
+    }
+  }, [chatMessages]);
 
   return (
-    <div className='list-wrapper' ref={listRef}>
+    <div className='list-wrapper'>
       <ol className='message-list'>
         {chatMessages.map((message) => (
-          <ChatMessage
-            diffFromToday={diffFromToday}
-            key={message.id}
-            message={message}
-            pauseScroll={pauseScroll}
-          />
+          <ChatMessage diffFromToday={diffFromToday} key={message.id} message={message} />
         ))}
+        {chatMessages.length ? <li className='the-anchor' ref={listRef} /> : null}
       </ol>
     </div>
   );

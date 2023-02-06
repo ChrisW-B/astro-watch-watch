@@ -13,20 +13,14 @@ import type { Post } from '~/types/posts';
 
 import './ChatMessage.css';
 
-type OwnProps = { pauseScroll: boolean; message: Post; diffFromToday: Duration };
+type OwnProps = { message: Post; diffFromToday: Duration };
 
-const ChatMessage: React.FC<OwnProps> = ({ message, diffFromToday, pauseScroll }) => {
+const ChatMessage: React.FC<OwnProps> = ({ message, diffFromToday }) => {
   const { content, mentions, author, id, timestamp, attachments, reactions, embeds } = message;
   const messageCreationTime = DateTime.fromISO(timestamp as string);
 
   const messageRef = React.useRef<HTMLLIElement>(null);
   const [shouldDisplay, setShouldDisplay] = React.useState(false);
-
-  React.useEffect(() => {
-    if (shouldDisplay && !pauseScroll) {
-      messageRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [shouldDisplay, pauseScroll]);
 
   React.useEffect(() => {
     let interval: NodeJS.Timeout;
