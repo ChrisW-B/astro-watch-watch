@@ -28,9 +28,10 @@ const useChatLog = (astroUrl: string, startTime: DateTime) => {
     );
   };
   const fetchNewPosts = async (timeSinceStart: Duration) => {
-    const fetchUri = `${astroUrl}/api/posts?time=${startTime.minus(timeSinceStart).toISO()}`;
+    const fetchUrl = new URL(`${astroUrl}/api/posts`);
+    fetchUrl.searchParams.append('time', startTime.minus(timeSinceStart).toISO());
 
-    const newPosts = await fetch(fetchUri);
+    const newPosts = await fetch(fetchUrl);
     const json = (await newPosts.json()) as Post[];
 
     setChatLog((log) => {
