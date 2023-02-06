@@ -19,9 +19,6 @@
   "dependencies": {
     "@astrojs/netlify": "2.1.1",
     "@astrojs/react": "2.0.2",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
-    "@webcomponents/template-shadowroot": "0.1.0",
     "astro": "2.0.6",
     "luxon": "3.2.1",
     "mongodb": "5.0.0",
@@ -33,18 +30,34 @@
   "devDependencies": {
     "@ronilaukkarinen/stylelint-a11y": "1.2.4",
     "@types/luxon": "3.2.0",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
     "@typescript-eslint/eslint-plugin": "5.50.0",
     "@typescript-eslint/parser": "5.50.0",
     "eslint": "8.33.0",
     "eslint-plugin-astro": "0.23.0",
     "eslint-plugin-jsx-a11y": "6.7.1",
+    "import-sort": "6.0.0",
+    "import-sort-parser-typescript": "6.0.0",
+    "import-sort-style-react": "5.1.0",
     "prettier": "2.8.3",
     "prettier-plugin-astro": "0.8.0",
+    "prettier-plugin-import-sort": "0.0.7",
     "prettier-plugin-packagejson": "2.4.2",
     "stylelint": "14.14.0",
     "stylelint-config-clean-order": "2.3.1",
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "29.0.0",
     "stylelint-no-unsupported-browser-features": "6.0.1"
+  },
+  "importSort": {
+    ".js, .jsx, .es6, .es, .mjs, .cjs": {
+      "parser": "babylon",
+      "style": "react"
+    },
+    ".ts, .tsx, .astro": {
+      "parser": "typescript",
+      "style": "react"
+    }
   }
 }

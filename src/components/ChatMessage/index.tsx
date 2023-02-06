@@ -1,11 +1,16 @@
-import { DateTime, type Duration } from 'luxon';
 import * as React from 'react';
-import type { Post } from '~/types/posts';
+
+import { DateTime } from 'luxon';
+// eslint-disable-next-line no-duplicate-imports
+import type { Duration } from 'luxon';
+
+import ChatReact from '~/components/ChatReact';
+import ChatText from '~/components/ChatText';
 import DiscordAttachment from '~/components/DiscordAttachment';
 import DiscordAvatar from '~/components/DiscordAvatar';
 import DiscordEmbed from '~/components/DiscordEmbed';
-import ChatText from '~/components/ChatText';
-import ChatReact from '~/components/ChatReact';
+import type { Post } from '~/types/posts';
+
 import './ChatMessage.css';
 
 type OwnProps = { pauseScroll: boolean; message: Post; diffFromToday: Duration };

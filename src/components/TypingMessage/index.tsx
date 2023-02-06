@@ -1,5 +1,7 @@
-import { DateTime, Duration } from 'luxon';
 import * as React from 'react';
+
+import { DateTime, Duration } from 'luxon';
+
 import './TypingMessage.css';
 
 interface OwnProps {

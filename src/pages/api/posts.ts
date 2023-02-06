@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { DateTime } from 'luxon';
+
 import { getPosts } from '~/db/posts';
 
 export const get: APIRoute = async ({ url }) => {
