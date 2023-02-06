@@ -28,7 +28,7 @@ const astroUrl = `${Astro.url.protocol}//${Astro.url.host}`;
 <Layout title='Watch the Mints'>
   <main class='main-grid'>
     <Sidebar />
-    <Header daysAgo={DAYS_AGO} />
+    <Header />
     {startTime ? <ChatLog astroUrl={astroUrl} startTime={startTime.toISO()} client:load /> : null}
   </main>
 </Layout>
