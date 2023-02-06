@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "config:base",
+    "group:recommended",
+    "group:monorepos",
+    "group:definitelyTyped",
+    "group:linters"
+  ],
+  "timezone": "America/New_York",
+  "dependencyDashboard": true,
+  "separateMinorPatch": true,
+  "reviewers": ["chrisw-b"],
+  "labels": ["dependency"],
+  "automerge": true,
+  "schedule": ["before 3pm on Sunday"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor"],
+      "groupName": "all minor dependencies"
+    },
+    {
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "all patch dependencies"
+    }
+  ]
+}
