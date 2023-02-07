@@ -1,8 +1,20 @@
 .discord-embed {
+  max-width: 33rem;
   margin: 0;
   padding: 1.6rem;
 
   background-color: var(--extra-light-grey);
   border-left: 4px solid var(--accent-color);
   border-radius: 4px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.field.span {
+  grid-column: span 3;
 }

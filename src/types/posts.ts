@@ -22,18 +22,27 @@ export type Author = {
 
 export type EmbedAuthor = { icon_url: string; name: string; proxy_icon_url: string; url: string };
 
+export type EmbedField = {
+  name: string;
+  value: string;
+  inline: boolean;
+};
+
 export type Embed = {
   author: EmbedAuthor;
   color: number;
-  description: string;
-  footer: { icon_url: string; proxy_icon_url: string; text: string };
-  provider: { name: string; url: string };
+  description?: string;
+  footer?: { icon_url: string; proxy_icon_url: string; text: string } | undefined;
+  provider?: { name: string; url: string } | undefined;
   reference_id: string;
-  thumbnail: { height: number; proxy_url: string; url: string; width: number };
+  thumbnail?: { height: number; proxy_url: string; url: string; width: number } | undefined;
   timestamp: string;
   type: string;
   url: string;
   video: Video;
+  title?: string;
+  id?: string;
+  fields?: EmbedField[] | undefined;
 };
 
 export type Mention = {

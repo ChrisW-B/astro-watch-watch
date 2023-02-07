@@ -55,7 +55,7 @@ const MarkdownText: React.FC<OwnProps> = ({ children }) => {
         ),
       }}
     >
-      {children}
+      {children.replace(/\n/gi, '\n\n')}
     </ReactMarkdown>
   );
 };

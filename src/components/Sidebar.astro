@@ -1,9 +1,49 @@
 <nav class='sidebar-wrapper'>
   <p class='sidecord-name'>The Breath Mints Historical Discord Presents</p>
   <h1 class='channel-name'># watch-watch-mints</h1>
+  <p class='dark-mode-toggle'>
+    <label>
+      Dark Mode
+      <input class='dark-mode' type='checkbox' />
+    </label>
+  </p>
 </nav>
 
+<script>
+  const themeToggle = document.querySelector('input.dark-mode');
+
+  const currentTheme = localStorage.getItem('theme');
+
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    if (currentTheme === 'dark') {
+      // @ts-expect-error
+      themeToggle.checked = true;
+    }
+  }
+
+  // @ts-expect-error
+  function switchTheme(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  // Add an event listener to the theme toggle, which will switch the theme
+  themeToggle?.addEventListener('change', switchTheme, false);
+</script>
+
 <style>
+  .dark-mode-toggle {
+    justify-self: flex-end;
+    padding: 2rem 0;
+    color: var(--dark-mode-dark);
+  }
   .sidebar-wrapper {
     grid-area: sidebar;
     background-color: var(--off-dark);

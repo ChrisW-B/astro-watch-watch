@@ -60,8 +60,8 @@ const ChatMessage: React.FC<OwnProps> = ({ message, diffFromToday }) => {
         </a>
       </p>
       <ChatText content={content} mentions={mentions} />
-      {embeds.map((embed) => (
-        <DiscordEmbed key={embed.reference_id} {...embed} />
+      {embeds.map((embed, index) => (
+        <DiscordEmbed key={embed.id ?? index} {...embed} />
       ))}
       {attachments.map((attachment) => (
         <DiscordAttachment key={attachment.id} {...attachment} />
