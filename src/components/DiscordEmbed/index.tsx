@@ -6,7 +6,16 @@ import discordColor from '~/utils/discordColor';
 
 import './DiscordEmbed.css';
 
-const DiscordEmbed: React.FC<Embed> = ({ description, color }) => {
+const DiscordEmbed: React.FC<Embed> = ({
+  description,
+  title,
+  color,
+  footer,
+  fields,
+  type,
+  video,
+  thumbnail,
+}) => {
   return (
     <blockquote
       className='discord-embed'
@@ -16,7 +25,30 @@ const DiscordEmbed: React.FC<Embed> = ({ description, color }) => {
         } as React.CSSProperties
       }
     >
-      <MarkdownText>{description}</MarkdownText>
+      {title ? <MarkdownText>{title}</MarkdownText> : null}
+      {type === 'gifv' ? (
+        <video
+          poster={thumbnail?.proxy_url}
+          src={video.url}
+          loop
+          preload=''
+          width={video.width}
+          height={video.height}
+          autoPlay
+          controls
+        />
+      ) : null}
+      {description ? <MarkdownText>{description}</MarkdownText> : null}
+      {fields?.length ? (
+        <div className='field-grid'>
+          {fields.map((field) => (
+            <div key={field.name} className={`field ${field.inline ? '' : 'span'}`}>
+              <MarkdownText>{`**${field.name}**\n${field.value}`}</MarkdownText>
+            </div>
+          ))}
+        </div>
+      ) : null}
+      {footer?.text ? <MarkdownText>{footer.text}</MarkdownText> : null}
     </blockquote>
   );
 };

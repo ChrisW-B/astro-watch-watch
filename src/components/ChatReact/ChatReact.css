@@ -1,4 +1,8 @@
 .reaction {
+  all: unset;
+
+  cursor: pointer;
+
   display: flex;
   flex-flow: row nowrap;
   gap: 0.5rem;
@@ -8,10 +12,30 @@
   padding: 0.25rem 0.375rem;
 
   background-color: var(--extra-light-grey);
-  border-radius: 4px;
+  border: 2px solid transparent;
+  border-radius: 0.25rem;
+
+  transition: all 250ms var(--bezier-transition);
+}
+
+.reaction:hover,
+.reaction:focus {
+  border: 2px solid var(--light-grey);
+}
+
+.reaction.active {
+  color: var(--react-color);
+  background-color: var(--react-bg);
+  border-color: var(--react-border);
 }
 
 .emoji-img {
   height: 100%;
-  padding: 0.125rem 0;
+  padding: 0.25rem 0;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .reaction {
+    transition: none;
+  }
 }
