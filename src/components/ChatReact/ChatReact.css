@@ -32,6 +32,8 @@
 .emoji-img {
   height: 100%;
   padding: 0;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {

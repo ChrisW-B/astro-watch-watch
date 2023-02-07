@@ -15,17 +15,8 @@ const useChatLog = (astroUrl: string, startTime: DateTime) => {
   const [chatLog, setChatLog] = React.useState<Map<string, Post>>(new Map());
   const initDate = React.useRef(DateTime.now());
 
-  const cleanUpOldPosts = (timeSinceStart: Duration) => {
-    setChatLog(
-      (log) =>
-        new Map(
-          [...log].filter(([, post]) => {
-            const timestamp = DateTime.fromISO(post.timestamp.toString());
-            const timeProgression = startTime.minus(timeSinceStart.plus({ minutes: 5 }));
-            return timestamp > timeProgression;
-          }),
-        ),
-    );
+  const cleanUpOldPosts = () => {
+    setChatLog((log) => new Map([...log].filter((_, index) => index > 20)));
   };
   const fetchNewPosts = async (timeSinceStart: Duration) => {
     const fetchUrl = new URL(`${astroUrl}/api/posts`);
@@ -48,7 +39,7 @@ const useChatLog = (astroUrl: string, startTime: DateTime) => {
     const interval = setInterval(async () => {
       const timeSinceStart = initDate.current.diffNow();
       await fetchNewPosts(timeSinceStart);
-      cleanUpOldPosts(timeSinceStart);
+      cleanUpOldPosts();
     }, 14 * 60 * 1000);
 
     return () => clearInterval(interval);

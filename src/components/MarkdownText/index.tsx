@@ -1,10 +1,37 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import type { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
+import reactStringReplace from 'react-string-replace';
 
 import remarkGfm from 'remark-gfm';
 
 import './MarkdownText.css';
+
+const getReactUrl = (reactId: string) =>
+  `https://cdn.discordapp.com/emojis/${reactId}.webp?size=32&quality=lossless`;
+
+// <:spacer:829388559034875904>
+const addInlineReacts = (text: string): React.ReactNode => {
+  const match = text.match(/(<:[\w_-]+:\d+?>)/gi);
+  if (match) {
+    return reactStringReplace(text, /(<:[\w_-]+:\d+?>)/gi, (match, i) => {
+      const reactParts = match.match(/<(:[\w_-]+:)(\d+)>/i);
+      if (reactParts) {
+        const [, reactName, reactId] = reactParts;
+        return (
+          <img
+            arial-label={reactName}
+            className='emoji'
+            key={`${reactName ?? ''}${i}`}
+            src={getReactUrl(reactId ?? '')}
+          />
+        );
+      }
+      return text;
+    });
+  }
+  return text;
+};
 
 const ParaWithSpoilers: React.FC<Omit<ReactMarkdownProps, 'children'>> = ({ node }) => {
   const spoiledChildren = node.children.map((child) =>
@@ -13,10 +40,10 @@ const ParaWithSpoilers: React.FC<Omit<ReactMarkdownProps, 'children'>> = ({ node
           (newChildren, childSection, i) => [
             ...newChildren,
             i % 2 === 0 ? (
-              <React.Fragment key={i}>{childSection}</React.Fragment>
+              <React.Fragment key={i}>{addInlineReacts(childSection)}</React.Fragment>
             ) : (
               <span className='markdown spoiler' key={i}>
-                {childSection}
+                {addInlineReacts(childSection)}
               </span>
             ),
           ],

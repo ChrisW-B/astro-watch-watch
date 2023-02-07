@@ -35,3 +35,10 @@
   color: var(--dark);
   background-color: var(--light-grey);
 }
+
+.emoji {
+  object-fit: contain;
+  width: 1.375em;
+  height: 1.375em;
+  vertical-align: bottom;
+}
