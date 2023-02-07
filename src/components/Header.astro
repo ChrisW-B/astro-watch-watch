@@ -2,7 +2,42 @@
   <p class='channel-hash'>#</p>
   <h2>watch-watch-mints</h2>
   <p class='channel-description'>watch the breath mints watch the breath mints.</p>
+  <p class='dark-mode-toggle'>
+    <label>
+      Dark Mode
+      <input class='dark-mode' type='checkbox' />
+    </label>
+  </p>
 </header>
+
+<script>
+  const themeToggle = document.querySelector('input.dark-mode');
+
+  const currentTheme = localStorage.getItem('theme');
+
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    if (currentTheme === 'dark') {
+      // @ts-expect-error
+      themeToggle.checked = true;
+    }
+  }
+
+  // @ts-expect-error
+  function switchTheme(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  // Add an event listener to the theme toggle, which will switch the theme
+  themeToggle?.addEventListener('change', switchTheme, false);
+</script>
 
 <style>
   .header-wrapper {
@@ -16,6 +51,10 @@
     z-index: 100;
   }
 
+  .dark-mode-toggle {
+    padding: 0 2rem 0 0;
+  }
+
   .channel-hash {
     font-size: 2.4rem;
     padding: 0 1rem;
@@ -26,5 +65,16 @@
     margin: 0 1.2rem;
     padding: 0 1.2rem;
     color: var(--light-grey);
+    flex: 1;
+  }
+
+  @media (max-width: 910px) {
+    .header-wrapper {
+      flex-flow: row wrap;
+    }
+    .dark-mode-toggle {
+      flex: 1 1 100%;
+      padding: 0.5rem 1.2rem;
+    }
   }
 </style>
