@@ -8,15 +8,9 @@ type OwnProps = Author & {
 
 const DiscordAvatar: React.FC<OwnProps> = ({ avatar }) => {
   return (
-    <div
-      className='avatar'
-      aria-hidden='true'
-      style={
-        {
-          '--bg-image': `url("${avatar}")`,
-        } as React.CSSProperties
-      }
-    />
+    <div className='avatar' aria-hidden='true'>
+      <img src={avatar} />
+    </div>
   );
 };
 

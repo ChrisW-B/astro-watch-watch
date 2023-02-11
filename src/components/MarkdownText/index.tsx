@@ -19,7 +19,7 @@ const MarkdownText: React.FC<OwnProps> = ({ children }) => {
         code: ({ node, ...props }) => <code className='markdown markdown-code' {...props} />,
         a: (props) => <a className='markdown markdown-anchor' {...props} />,
         p: ({ node, ...props }) => <p className='markdown markdown-p' {...props} />,
-        img: ({node, ...props}) => <img {...props} className='markdown markdown-img' />
+        img: ({ node, ...props }) => <img {...props} className='markdown markdown-img' />,
       }}
     >
       {children}
