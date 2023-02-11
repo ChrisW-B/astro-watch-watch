@@ -18,5 +18,5 @@ DB_PASSWORD=""
 
    - You'll need to upload with mongo-tools in the format `mongoimport --uri mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER_NAME>/<DATABASE> --collection <COLLECTION> --type json --file <FILENAME> --jsonArray`
 
-3. Update the timestamp field to a datetime type: `db.posts.updateMany({}, [{ "$set": { "timestamp": { "$toDate": "$dateField" } }}]);`
+3. Update the timestamp field to a datetime type: `db.posts.updateMany({}, [{ "$set": { "timestamp": { "$toDate": "$timestamp" } }}]);`
 4. Update env varibles to point to the db, and run the project!
