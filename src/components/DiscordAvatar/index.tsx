@@ -13,7 +13,7 @@ const DiscordAvatar: React.FC<OwnProps> = ({ avatar }) => {
       aria-hidden='true'
       style={
         {
-          '--bg-image': `url(${avatar})`,
+          '--bg-image': `url("${avatar}")`,
         } as React.CSSProperties
       }
     />
