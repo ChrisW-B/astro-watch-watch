@@ -4,6 +4,10 @@
   border-left: 4px solid var(--light-grey);
 }
 
+.markdown-img {
+  max-width: 16rem;
+}
+
 .markdown-anchor {
   color: var(--link-blue);
   text-decoration: none;

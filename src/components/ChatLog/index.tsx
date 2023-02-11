@@ -11,6 +11,26 @@ type OwnProps = {
   astroUrl: string;
 };
 
+const staggerMessages = (messages: Post[]) => {
+  const groupTimes = messages.reduce((groupedPosts, post) => {
+    if (!Object.hasOwn(groupedPosts, post.timestamp as string)) {
+      groupedPosts[post.timestamp as string] = [];
+    }
+    groupedPosts[post.timestamp as string]?.push(post);
+    return groupedPosts;
+  }, {} as Record<string, Post[]>);
+
+  Object.entries(groupTimes).forEach(([time, messageList]) => {
+    groupTimes[time] = messageList.map((message, i) => ({
+      ...message,
+      timestamp: DateTime.fromISO(time)
+        .plus({ seconds: (60 / messageList.length) * i })
+        .toISO(),
+    }));
+  });
+  return Object.values(groupTimes).flat();
+};
+
 const useChatLog = (astroUrl: string, startTime: DateTime) => {
   const [chatLog, setChatLog] = React.useState<Map<string, Post>>(new Map());
   const initDate = React.useRef(DateTime.now());
@@ -24,10 +44,11 @@ const useChatLog = (astroUrl: string, startTime: DateTime) => {
 
     const newPosts = await fetch(fetchUrl);
     const json = (await newPosts.json()) as Post[];
+    const staggeredMessages = staggerMessages(json);
 
     setChatLog((log) => {
       const newLog = new Map();
-      json.forEach((post) => newLog.set(post.id, post));
+      staggeredMessages.forEach((post) => newLog.set(post._id, post));
       return new Map([...log, ...newLog]);
     });
   };

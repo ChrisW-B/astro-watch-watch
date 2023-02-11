@@ -28,7 +28,7 @@ const ChatList: React.FC<OwnProps> = ({ chatMessages, diffFromToday }) => {
     <div className='list-wrapper'>
       <ol className='message-list'>
         {chatMessages.map((message) => (
-          <ChatMessage diffFromToday={diffFromToday} key={message.id} message={message} />
+          <ChatMessage diffFromToday={diffFromToday} key={message._id} message={message} />
         ))}
         {chatMessages.length ? <li className='the-anchor' ref={listRef} /> : null}
       </ol>

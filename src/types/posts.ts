@@ -56,13 +56,8 @@ export type Mention = {
 export type MessageReference = { channel_id: string; guild_id: string; message_id: string };
 
 export type Reaction = {
-  burst_count: number;
-  burst_me: boolean;
+  src: string;
   count: number;
-  count_details: { burst: number; normal: number };
-  emoji: { id: string; name: string };
-  me: boolean;
-  me_burst: boolean;
 };
 
 export type Post = {

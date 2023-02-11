@@ -6,16 +6,14 @@ type OwnProps = Author & {
   avatarUrl?: string | undefined;
 };
 
-const DiscordAvatar: React.FC<OwnProps> = ({ id, avatar, avatarUrl }) => {
+const DiscordAvatar: React.FC<OwnProps> = ({ avatar }) => {
   return (
     <div
       className='avatar'
       aria-hidden='true'
       style={
         {
-          '--bg-image': avatarUrl
-            ? `url(${avatarUrl})`
-            : `url('https://cdn.discordapp.com/avatars/${id}/${avatar}.png?size=80')`,
+          '--bg-image': `url(${avatar})`,
         } as React.CSSProperties
       }
     />
