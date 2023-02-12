@@ -1,8 +1,6 @@
-# Watch watch-mints
+# Watch fauxliamint
 
-Fun little app for displaying a historical discord record.
-
-Uses mongodb to store discord history, and requires the environment variables:
+A modified version of watch-watch mints meant for parsing discord html archives. Not quite as good, unfortunately.
 
 ```
 MONGODB_URI=""

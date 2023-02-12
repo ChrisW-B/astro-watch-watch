@@ -16,7 +16,7 @@ import './ChatMessage.css';
 type OwnProps = { message: Post; diffFromToday: Duration };
 
 const ChatMessage: React.FC<OwnProps> = ({ message, diffFromToday }) => {
-  const { content, mentions, author, id, timestamp, attachments, reactions, embeds } = message;
+  const { content, author, id, timestamp, attachments, reactions, embeds } = message;
   const messageCreationTime = DateTime.fromISO(timestamp as string);
 
   const messageRef = React.useRef<HTMLLIElement>(null);
@@ -59,16 +59,16 @@ const ChatMessage: React.FC<OwnProps> = ({ message, diffFromToday }) => {
           {messageCreationTime.toLocaleString(DateTime.DATETIME_MED)}
         </a>
       </p>
-      <ChatText content={content} mentions={mentions} />
+      <ChatText content={content} />
       {embeds.map((embed, index) => (
-        <DiscordEmbed key={embed.id ?? index} {...embed} />
+        <DiscordEmbed key={index} {...embed} />
       ))}
-      {attachments.map((attachment) => (
-        <DiscordAttachment key={attachment.id} {...attachment} />
+      {attachments.map((attachment, index) => (
+        <DiscordAttachment key={index} {...attachment} />
       ))}
       <div className='react-list'>
         {reactions?.map((react) => (
-          <ChatReact key={JSON.stringify(react.emoji)} {...react} />
+          <ChatReact key={react.src} {...react} />
         ))}
       </div>
     </li>

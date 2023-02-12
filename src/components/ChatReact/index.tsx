@@ -7,9 +7,9 @@ import './ChatReact.css';
 const minDelay = 250;
 const maxDelay = 2000;
 
-const ChatReact: React.FC<Reaction> = ({ emoji, count }) => {
+const ChatReact: React.FC<Reaction> = ({ src, count }) => {
   const [reacted, setReacted] = React.useState(false);
-  const [fakeCount, setFakeCount] = React.useState(1);
+  const [fakeCount, setFakeCount] = React.useState(0);
 
   React.useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -32,28 +32,17 @@ const ChatReact: React.FC<Reaction> = ({ emoji, count }) => {
     return () => clearTimeout(timeout);
   }, []);
 
-  return (
+  return fakeCount ? (
     <button
       className={`reaction ${reacted ? 'active' : ''}`}
       onClick={() => setReacted((reacted) => !reacted)}
     >
-      {!emoji.id ? (
-        <p>
-          {emoji.name} <span className='react-count'>{fakeCount + (reacted ? 1 : 0)}</span>
-        </p>
-      ) : (
-        <>
-          <img
-            className='emoji-img'
-            src={`https://cdn.discordapp.com/emojis/${emoji.id}.webp?size=32&quality=lossless`}
-          />
-          <p>
-            <span className='react-count'>{fakeCount + (reacted ? 1 : 0)}</span>
-          </p>
-        </>
-      )}
+      <img className='emoji-img' src={src} />
+      <p>
+        <span className='react-count'>{fakeCount + (reacted ? 1 : 0)}</span>
+      </p>
     </button>
-  );
+  ) : null;
 };
 
 export default ChatReact;

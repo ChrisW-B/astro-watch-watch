@@ -1,11 +1,18 @@
 .avatar {
+  position: relative;
+
+  overflow: hidden;
   grid-column: 1;
   grid-row: span 4;
 
   width: 3.125rem;
   height: 3.125rem;
 
-  background-image: var(--bg-image);
-  background-size: cover;
   border-radius: 100%;
+}
+
+.avatar img {
+  position: absolute;
+  width: 3.125rem;
+  height: 3.125rem;
 }

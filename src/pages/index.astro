@@ -37,7 +37,7 @@ const astroUrl = `${Astro.url.protocol}//${Astro.url.host}`;
   .main-grid {
     display: grid;
     grid-template:
-      'sidebar header' minmax(4rem, auto)
+      'sidebar header' minmax(4rem, 6rem)
       'sidebar chat' auto
       'sidebar typing-message' min-content
       / 16rem auto;
@@ -48,7 +48,7 @@ const astroUrl = `${Astro.url.protocol}//${Astro.url.host}`;
   @media (max-width: 680px) {
     .main-grid {
       grid-template:
-        'header' minmax(4rem, auto)
+        'header' minmax(4rem, 6rem)
         'chat' auto
         'typing-message' 2rem
         / auto;
