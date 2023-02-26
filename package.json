@@ -17,9 +17,9 @@
     "typescript": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/netlify": "2.1.2",
+    "@astrojs/netlify": "2.1.3",
     "@astrojs/react": "2.0.2",
-    "astro": "2.0.14",
+    "astro": "2.0.15",
     "luxon": "3.2.1",
     "mongodb": "5.0.1",
     "react": "18.2.0",
