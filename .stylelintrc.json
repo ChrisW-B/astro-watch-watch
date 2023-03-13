@@ -3,7 +3,6 @@
     "stylelint-config-standard",
     "stylelint-config-recommended",
     "@ronilaukkarinen/stylelint-a11y/recommended",
-    "stylelint-config-prettier",
     "stylelint-config-clean-order"
   ],
   "plugins": ["stylelint-no-unsupported-browser-features", "@ronilaukkarinen/stylelint-a11y"],
